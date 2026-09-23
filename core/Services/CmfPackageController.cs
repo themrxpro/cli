@@ -42,7 +42,8 @@ public class CmfPackageController
         "tagFile",
         "targetDatabase",
         "filePath",
-        "oldSystemName"
+        "oldSystemName",
+        "targetPlatform"
     ];
     
     public CmfPackageController(CmfPackageV1 package, IFileSystem fileSystem)
@@ -391,6 +392,10 @@ public class CmfPackageController
                     step.DeeBasePath = element.Attribute("deeBasePath")?.Value;
                     step.ImportXMLObjectPath = element.Attribute("importXMLObjectPath")?.Value;
                     step.AutomationWorkflowFileBasePath = element.Attribute("automationWorkflowFileBasePath")?.Value;
+                    step.TargetPlatform = element.Attribute("targetPlatform")?.Value is string targetPlatformValue
+                        && Enum.TryParse(targetPlatformValue, out MasterDataTargetPlatformType targetPlatform)
+                            ? targetPlatform
+                            : null;
 
                 // // Create an XmlSerializer for the Person type
                 // XmlSerializer serializer = new XmlSerializer(typeof(Step));

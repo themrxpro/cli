@@ -176,6 +176,7 @@ namespace Cmf.CLI.Core.Objects
         /// Gets or sets the target platform for master data content.
         /// Default value = self
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public MasterDataTargetPlatformType? TargetPlatform { get; set; }
 
         /// <summary>
